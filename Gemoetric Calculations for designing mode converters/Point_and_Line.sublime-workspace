@@ -1,0 +1,324 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"wd",
+				"wideutilde	\\wideutilde"
+			],
+			[
+				"x",
+				"_x	\\_x"
+			],
+			[
+				"installed",
+				"installed"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 127.0,
+		"last_filter": "ins pac",
+		"selected_items":
+		[
+			[
+				"ins pac",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: ",
+				"Package Control: Remove Package"
+			],
+			[
+				"ins pack",
+				"Package Control: Install Package"
+			],
+			[
+				"pac inst",
+				"Package Control: Install Package"
+			],
+			[
+				"pa in",
+				"Package Control: Install Package"
+			],
+			[
+				"ijulia",
+				"Sublime-IJulia: Open New IJulia Console"
+			],
+			[
+				"pack",
+				"Package Control: Install Package"
+			],
+			[
+				"julia",
+				"Sublime-IJulia: Open New IJulia Console"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"syntax",
+				"Apply Julia Syntax to .jl Files"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"open ijulia",
+				"Sublime-IJulia: Open New IJulia Console"
+			],
+			[
+				"",
+				"Indentation: Convert to Spaces"
+			],
+			[
+				"gdb",
+				"Preferences: SublimeGDB Settings – Default"
+			],
+			[
+				"c++",
+				"Set Syntax: C++"
+			],
+			[
+				"in pa",
+				"Package Control: Install Package"
+			],
+			[
+				"pa co",
+				"Package Control: Upgrade Package"
+			],
+			[
+				"Package Control: l pa",
+				"Package Control: List Packages"
+			],
+			[
+				"package control:",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 464.0
+	},
+	"console":
+	{
+		"height": 491.0,
+		"history":
+		[
+			"C:/Users/wonjin/AppData/Local/Julia-0.3.8/julia.exe  C:\\Users\\wonjin/.julia/v0.3/IJulia/src/kernel.jl \"C:\\Users\\wonjin\\AppData\\Roaming\\Sublime Text 3\\Packages/User/profile-1.json\"",
+			"import urllib.request,os,hashlib; h = 'eb2297e1a458f27d836c04bb0cbaf282' + 'd0e7a3098092775ccb37ca9d6b2e4b7d'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)",
+			"ls",
+			"import urllib.request,os,hashlib; h = 'eb2297e1a458f27d836c04bb0cbaf282' + 'd0e7a3098092775ccb37ca9d6b2e4b7d'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)",
+			"import urllib.request,os,sys; exec(\"if sys.version_info < (3,) or os.name != 'nt': raise OSError('This code is for Windows ST3 only!')\"); pr='Preferences.sublime-settings'; ip='ignored_packages'; n='Package Control'; s=sublime.load_settings(pr); ig=s.get(ip); ig.append(n); s.set(ip,ig); sublime.save_settings('Preferences.sublime-settings'); pf=n+'.sublime-package'; urllib.request.install_opener(urllib.request.build_opener(urllib.request.ProxyHandler())); by=urllib.request.urlopen('https://packagecontrol.io/'+pf.replace(' ','%20')).read(); open(os.path.join(sublime.installed_packages_path(),pf),'wb').write(by); ig.remove(n); s.set(ip,ig); sublime.save_settings(pr); print('Package Control: 3.0.0 upgrade successful!')",
+			"import urllib.request,os,sys; exec(\"if sys.version_info < (3,) or os.name != 'nt': raise OSError('This code is for Windows ST3 only!')\"); pr='Preferences.sublime-settings'; ip='ignored_packages'; n='Package Control'; s=sublime.load_settings(pr); ig=s.get(ip); ig.append(n); s.set(ip,ig); sublime.save_settings('Preferences.sublime-settings'); pf=n+'.sublime-package'; urllib.request.install_opener(urllib.request.build_opener(urllib.request.ProxyHandler())); by=urllib.request.urlopen('https://packagecontrol.io/'+pf.replace(' ','%20')).read(); open(os.path.join(sublime.installed_packages_path(),pf),'wb').write(by); ig.remove(n); s.set(ip,ig); sublime.save_settings(pr); print('Package Control: 3.0.0 upgrade successful!')\\",
+			"import urllib.request,os,hashlib; h = '7183a2d3e96f11eeadd761d777e62404' + 'e330c659d4bb41d3bdf022e94cab3cd0'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by) ",
+			"pwd",
+			"cd"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/C/Users/wonjin/AppData/Roaming/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/D/tmp/RJ123294/data.win",
+		"/D/tmp/RJ123294/궼궣귕궸궓벶귒궘궬궠궋갃.txt",
+		"/C/Users/wonjin/AppData/Roaming/Sublime Text 3/Packages/User/SublimeLinter.sublime-settings",
+		"/C/Users/wonjin/SkyDrive/문서/Assignments/CSE471-computer-graphics/Assign-1/skeleton-code/CMakeLists.txt",
+		"/C/Users/wonjin/AppData/Roaming/Sublime Text 3/Packages/SublimeLinter/SublimeLinter.sublime-settings",
+		"/C/Virtual Machines/linuxmint-17.1-cinnamon-64bit/linuxmint-17.1-cinnamon-64bit.vmx",
+		"/C/Users/wonjin/Documents/gitignore_global.txt",
+		"/C/Users/wonjin/Documents/hgignore_global.txt",
+		"/C/Users/wonjin/AppData/Roaming/Sublime Text 3/Packages/User/Sublime-IJulia.sublime-settings",
+		"/C/Users/wonjin/AppData/Roaming/Sublime Text 3/Packages/Legal Markdown/LegalMarkdown.sublime-settings",
+		"/C/Users/wonjin/AppData/Roaming/Sublime Text 3/Packages/BracketHighlighter/bh_core.sublime-settings",
+		"/C/Users/wonjin/Desktop/aaaa.html",
+		"/C/Users/wonjin/AppData/Roaming/Sublime Text 3/Packages/BracketHighlighter/Example.sublime-keymap",
+		"/C/Users/wonjin/AppData/Roaming/Sublime Text 3/Packages/AdvancedNewFile/AdvancedNewFile.sublime-settings",
+		"/C/Users/wonjin/AppData/Roaming/Sublime Text 3/Packages/AdvancedNewFile/README.md",
+		"/C/Users/wonjin/AppData/Roaming/Sublime Text 3/Packages/AdvancedNewFile/Default (Windows).sublime-keymap",
+		"/C/Users/wonjin/SkyDrive/문서/Assignments/CSE471-computer-graphics/assign2-skeleton/CMakeLists.txt",
+		"/C/Users/wonjin/Desktop/main.cpp",
+		"/C/Users/wonjin/SkyDrive/문서/Assignments/CSE471-computer-graphics/Final-Project/CMakeLists.txt",
+		"/E/Downloads/RJ123294/궼궣귕궸궓벶귒궘궬궠궋갃.txt",
+		"/C/Users/wonjin/SkyDrive/문서/Assignments/CSE471-computer-graphics/Final-Project/build/CMakeCache.txt",
+		"/C/Users/wonjin/SkyDrive/문서/Assignments/CSE471-computer-graphics/Final-Project/glew/lib/glewinfo.txt",
+		"/C/Users/wonjin/AppData/Roaming/Sublime Text 3/Packages/UnicodeMath/UnicodeMath.sublime-settings",
+		"/E/Downloads/HRMOD Gun Sounds 1.9632/readme.txt",
+		"/E/Downloads/translate_realese-18/날읽어.txt",
+		"/D/tmp/처녀신이야기 Alpha/공략/이거도 공략2-댓글.txt",
+		"/D/tmp/처녀신이야기 Alpha/공략/이거도 공략1.txt",
+		"/D/tmp/처녀신이야기 Alpha/공략/이거도 공략2.txt",
+		"/C/Users/wonjin/AppData/Roaming/Sublime Text 3/Packages/Default/Preferences.sublime-settings",
+		"/C/Users/wonjin/AppData/Local/Julia-0.3.8/hello.jl",
+		"/C/Users/wonjin/SkyDrive/문서/Numerical recipes/nr3.h",
+		"/C/Users/wonjin/.julia/v0.3/ZMQ/README.md",
+		"/C/Users/wonjin/AppData/Roaming/Sublime Text 3/Packages/IJulia/Sublime-IJulia.sublime-settings",
+		"/C/Users/wonjin/AppData/Roaming/Sublime Text 3/Packages/SublimeGDB/SublimeGDB.sublime-settings",
+		"/D/Sublime Text 3/hello.cpp",
+		"/C/Users/wonjin/AppData/Roaming/Sublime Text 3/Packages/User/Default (Windows).sublime-keymap",
+		"/C/Users/wonjin/AppData/Roaming/Sublime Text 3/Packages/User/SublimeGDB.sublime-settings",
+		"/C/Users/wonjin/AppData/Roaming/Sublime Text 3/Packages/User/Package Control.sublime-settings",
+		"/D/Downloads/cppStartingKit-master/README.md",
+		"/D/Downloads/cppStartingKit-master/messages/install.txt",
+		"/D/Games/World_of_Tanks_KR/res_mods/xvm/configs/xvm.xc"
+	],
+	"find":
+	{
+		"height": 28.0
+	},
+	"find_in_files":
+	{
+		"height": 108.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"false",
+			"https",
+			"x",
+			"\"color_scheme\": \"Packages/Oasis Theme/Oasis.tmTheme\",\n	\"font_size\": 16,\n	\"ignored_packages\":",
+			"function",
+			"()",
+			"en",
+			"10",
+			"pciBridge4",
+			"serial0.fileType = \"thinprint\"\n",
+			"font",
+			"Gadfly",
+			"Gadf"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 28.0
+	},
+	"input":
+	{
+		"height": 40.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "Point_and_Line.sublime-project",
+	"replace":
+	{
+		"height": 52.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"aa",
+				"C:\\Users\\wonjin\\Desktop\\aa.jl"
+			],
+			[
+				"",
+				"C:\\Users\\wonjin\\AppData\\Roaming\\Sublime Text 3\\Packages\\User\\Sublime-IJulia.sublime-settings"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 150.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
