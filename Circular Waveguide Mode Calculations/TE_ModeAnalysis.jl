@@ -50,7 +50,9 @@ function calTE(cond::ModeCondition)
 	x = linspace(-Rlim,Rlim,N)
 	y = linspace(-Rlim,Rlim,N)
 
-	Ex = Ey = Exold = Eyold = Exx = Eyy = zeros(Complex, N)
+    Ex = Ey = zeros(Complex, N, N)
+	Exold = Eyold = 0im
+    Exx = Eyy = zeros(Complex, N)
 
 	for kk = 1:N
         for qq = 1:N
@@ -63,25 +65,23 @@ function calTE(cond::ModeCondition)
             if r <= Rw
                 # from above equations, add arbitrary amplitude (A)
                 # & phase (phi1)
-                Exold = ((im.*m./kr./r).*B*exp(im*phi2)*cos(m.*(phi)).*cos(phi)
-                    .* Jm + im.*B*exp(im*phi2)*sin(m.*(phi)).*sin(phi).*Jmprime
-                    - A.*exp(im*phi1).*(im.*(m)./kr./r).*sin((m).*(phi)).*cos(phi)
-                    .*Jm + im.*A.*exp(im*phi1).*cos((m).*(phi)).*sin(phi)
-                    .*Jmprime)
-                Eyold = ((im.*m./kr./r).*B*exp(im*phi2)*cos(m.*(phi)).*sin(phi)
-                    .* Jm - im.*B*exp(im*phi2)*sin(m.*(phi)).*cos(phi).*Jmprime
-                    - A.*exp(im*  phi1).* (im.*(m)./kr./r).*sin((m).*(phi))
-                    .*sin(phi).*Jm  - im.*A.*exp(im*phi1).*cos((m).*(phi))
-                    .*cos(phi).*Jmprime)  
+                Exold = ((im*m/kr/r)*B*exp(im*phi2)*cos(m*phi)*cos(phi)
+                    * Jm + im*B*exp(im*phi2)*sin(m*phi)*sin(phi)*Jmprime
+                    - A*exp(im*phi1)*(im*m/kr/r)*sin(m*phi)*cos(phi)*Jm
+                    + im*A*exp(im*phi1)*cos(m*phi)*sin(phi)*Jmprime)
+                Eyold = ((im*m/kr/r)*B*exp(im*phi2)*cos(m*phi)*sin(phi)
+                    * Jm - im*B*exp(im*phi2)*sin(m*phi)*cos(phi)*Jmprime
+                    - A*exp(im*phi1)*(im*m/kr/r)*sin(m*phi)*sin(phi)*Jm
+                    - im*A*exp(im*phi1)*cos(m*phi)*cos(phi)*Jmprime)  
             else
-                Exold=10^(-2.0);
-                Eyold=10^(-2.0);
+                Exold = complex(10^(-2.0))
+                Eyold = complex(10^(-2.0))
             end
             Exx[qq] = Exold
             Eyy[qq] = Eyold
         end
-        Ex = [Ex Exx]
-        Ey = [Ey Eyy]
+        Ex[:, kk] = Exx[:]
+        Ey[:, kk] = Eyy[:]
     end
 
     Ex1 = Ex.*complex(cos(phi3)) - complex(sin(phi3)).*Ey # rotation of field w.r.t. 
@@ -89,35 +89,37 @@ function calTE(cond::ModeCondition)
     Ey1 = complex(sin(phi3)).*Ex + Ey.*complex(cos(phi3))
     Ex = Ex1
     Ey = Ey1
-    # Efield = Ex + exp(im*phi3)*Ey
-    Exdb = 20 .* log(abs(Ex)./maximum(abs(Ex)))
-    Eydb = 20 .* log(abs(Ey)./maximum(abs(Ey)))
 
-    Emag = sqrt(((real(Ex)).^2 + (imag(Ex)).^2) + ((real(Ey).^2 + imag(Ey).^2)))
+    # Efield = Ex + exp(im*phi3)*Ey
+    Exdb = 20 .* log(float64(abs(Ex)./maximum(abs(Ex))))
+    Eydb = 20 .* log(float64(abs(Ey)./maximum(abs(Ey))))
+
+    Emag = sqrt(float64(((real(Ex)).^2 + (imag(Ex)).^2)
+        + ((real(Ey).^2 + imag(Ey).^2))))
     Edb = 20 .* log(Emag./maximum(Emag))
 
     Exphase = angle(Ex)
-    Exphase = angle(Ey)
+    Eyphase = angle(Ey)
 
     figure(1)
     subplot(221)
-    imagesc(x,y,abs(Ex)); grid("on"); colorbar; axis("xy")
+    img1 = imshow(abs(Ex)); grid("on"); colorbar(img1); axis("on")
     subplot(222)
-    imagesc(x,y,abs(Ey)); grid("on"); colorbar; axis("xy")
-    subplot(223);
-    imagesc(x,y,Exphase); grid("on"); colorbar; axis("xy")
-    subplot(224);
-    imagesc(x,y,Eyphase); grid("on"); colorbar; axis("xy")
+    img2 = imshow(abs(Ey)); grid("on"); colorbar(img2); axis("on")
+    subplot(223)
+    img3 = imshow(Exphase); grid("on"); colorbar(img3); axis("on")
+    subplot(224)
+    img4 = imshow(Eyphase); grid("on"); colorbar(img4); axis("on")
 
     figure(2)
     subplot(221)
     clims = [-40 0];
-    imagesc(x,y,Exdb,clims); grid("on"); colorbar; axis("xy")
+    img5 = imshow(Exdb,vmin=-40,vmax=0); grid("on"); colorbar(img5); axis("on")
     subplot(222)
-    imagesc(x,y,Eydb,clims); grid("on"); colorbar; axis("xy")
+    img6 = imshow(Eydb,vmin=-40,vmax=0); grid("on"); colorbar(img6); axis("on")
     subplot(223)
-    imagesc(x,y,Edb,clims); grid("on"); colorbar; axis("xy")
+    img7 = imshow(Edb,vmin=-40,vmax=0); grid("on"); colorbar(img7); axis("on")
     subplot(224)
-    imagesc(x,y,Emag); grid("on"); colorbar; axis("xy")
+    img8 = imshow(Emag); grid("on"); colorbar(img8); axis("on")
 
 end
