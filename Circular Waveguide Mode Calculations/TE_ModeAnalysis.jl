@@ -18,11 +18,22 @@ type ModeCondition
 end
 
 function BesselJPrimeRoots(m::Int, n::Int)
-	besseljm(x) = besselj(m, x)
-	dbesseljm = derivative(besseljm)
-	dbjzeros = fzeros(dbesseljm, 0.1, 20) # limits can be changed
-										# if n is high
-	dbjzeros[n]
+    besseljm(x) = besselj(m, x)
+    dbesseljm = derivative(besseljm)
+    dbjzeros = fzeros(dbesseljm, 0.0, 50) # limits can be changed
+                                       # if n is high
+    if dbjzeros[1] == 0.0
+        deleteat!(dbjzeros, 1)
+    end
+
+    testonemore(x::Float64) = dbesseljm(x)*dbesseljm(nextfloat(x)) > 0 &&
+                                dbesseljm(x)*dbesseljm(prevfloat(x)) > 0
+
+    while testonemore(dbjzeros[1])
+        deleteat!(dbjzeros, 1)
+    end
+
+    dbjzeros[n]
 end
 
 
@@ -46,7 +57,7 @@ function calTE(cond::ModeCondition)
 	kr = nump/Rw
 	k = omega/c
 	kz = sqrt(k^2 - kr^2)
-	
+
 	x = linspace(-Rlim,Rlim,N)
 	y = linspace(-Rlim,Rlim,N)
 
@@ -72,7 +83,7 @@ function calTE(cond::ModeCondition)
                 Eyold = ((im*m/kr/r)*B*exp(im*phi2)*cos(m*phi)*sin(phi)
                     * Jm - im*B*exp(im*phi2)*sin(m*phi)*cos(phi)*Jmprime
                     - A*exp(im*phi1)*(im*m/kr/r)*sin(m*phi)*sin(phi)*Jm
-                    - im*A*exp(im*phi1)*cos(m*phi)*cos(phi)*Jmprime)  
+                    - im*A*exp(im*phi1)*cos(m*phi)*cos(phi)*Jmprime)
             else
                 Exold = complex(10^(-2.0))
                 Eyold = complex(10^(-2.0))
@@ -84,7 +95,7 @@ function calTE(cond::ModeCondition)
         Ey[:, kk] = Eyy[:]
     end
 
-    Ex1 = Ex.*complex(cos(phi3)) - complex(sin(phi3)).*Ey # rotation of field w.r.t. 
+    Ex1 = Ex.*complex(cos(phi3)) - complex(sin(phi3)).*Ey # rotation of field w.r.t.
                                         # observation plane
     Ey1 = complex(sin(phi3)).*Ex + Ey.*complex(cos(phi3))
     Ex = Ex1
