@@ -20,9 +20,9 @@ end
 function BesselJPrimeRoots(m::Int, n::Int)
 	besseljm(x) = besselj(m, x)
 	dbesseljm = derivative(besseljm)
-	dbjzeros = fzeros(dbesseljm, 0, 20) # limits can be changed
+	dbjzeros = fzeros(dbesseljm, 0.1, 20) # limits can be changed
 										# if n is high
-	dbjzeros[n+1]
+	dbjzeros[n]
 end
 
 

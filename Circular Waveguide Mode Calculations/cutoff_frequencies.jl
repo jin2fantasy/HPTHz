@@ -6,27 +6,28 @@
 Diam = 11e-3 # diameter of circular waveguide, in [m]
 const c = 299792458 # speed of light, in [m/s]
 
-using Calculus
-# functions for derivatives of bessel functions
-#=! a variable x shouldn't be declared before !=#
-function deriv_besselj0(n::Number)
-    dbj0 = differentiate("besselj0(x)", :x)
-    global x = n
-    return eval(dbj0)
-end
-function deriv_besselj1(n::Number)
-    dbj1 = differentiate("besselj1(x)", :x)
-    global x = n
-    return eval(dbj1)
-end
-
 using Roots
-# find the roots of derivatives of bessel functions
-dbj0roots = fzeros(deriv_besselj0,-1,20)
-dbj1roots = fzeros(deriv_besselj1,-1,20)
+# find the nth root of derivatives of bessel functions
+function BesselJPrimeRoots(m::Int, n::Int)
+    besseljm(x) = besselj(m, x)
+    dbesseljm = derivative(besseljm)
+    dbjzeros = fzeros(dbesseljm, 0.0, 50) # limits can be changed
+                                       # if n is high
+    if dbjzeros[1] == 0.0
+        deleteat!(dbjzeros, 1)
+    end
+ 
+    testonemore(x::Float64) = dbesseljm(x)*dbesseljm(nextfloat(x)) > 0 &&
+                                dbesseljm(x)*dbesseljm(prevfloat(x)) > 0
 
-# cutoff frequencies for TE11, TE01, TE02, TE03 modes, respectively, in [Hz]
-fc11 = c*dbj1roots[1]/(pi*Diam)
-fc01 = c*dbj0roots[2]/(pi*Diam)
-fc02 = c*dbj0roots[3]/(pi*Diam)
-fc03 = c*dbj0roots[4]/(pi*Diam)
+    while testonemore(dbjzeros[1])
+        deleteat!(dbjzeros, 1)
+    end
+
+    dbjzeros[n]
+end
+
+for m = 0:10, n = 1:4
+    println("cutoff for TE$(m),$(n) mode is ",
+    c*BesselJPrimeRoots(m, n)/(pi*Diam)/1e9, " GHz")
+end
