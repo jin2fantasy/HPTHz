@@ -10,7 +10,7 @@ using Roots
 using Calculus
 using PyPlot
 
-type ModeCondition
+immutable ModeCondition
 	m::Int # azimuthal number
 	n::Int # radial number
 	Rw # [cm] radius of the cavity

@@ -3,9 +3,10 @@
 ## Author:wonjin
 ## Reference: David. M. Pozar. Microwave Enginnering. 4th edition. p.124
 
-Diam = 11e-3 # diameter of circular waveguide, in [m]
+Radius = 5.5e-3 # diameter of circular waveguide, in [m]
 const c = 299792458 # speed of light, in [m/s]
 
+using Calculus
 using Roots
 # find the nth root of derivatives of bessel functions
 function BesselJPrimeRoots(m::Int, n::Int)
@@ -27,7 +28,14 @@ function BesselJPrimeRoots(m::Int, n::Int)
     dbjzeros[n]
 end
 
-for m = 0:10, n = 1:4
-    println("cutoff for TE$(m),$(n) mode is ",
-    c*BesselJPrimeRoots(m, n)/(pi*Diam)/1e9, " GHz")
+Radius = 5.5e-3:-0.1e-3:5.2e-3
+open("cutoff_results.txt", "w") do f
+    for r in Radius
+        println(f, "radius is $(r*1e3) mm")
+            for m = 0:10, n = 1:4
+                println(f, "    cutoff for TE$(m),$(n) mode is ",
+                        c*BesselJPrimeRoots(m, n)/(2pi*r)/1e9, " GHz")
+            end
+    end
 end
+
