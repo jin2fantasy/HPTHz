@@ -17,7 +17,7 @@ function BesselJPrimeRoots(m::Int, n::Int)
     if dbjzeros[1] == 0.0
         deleteat!(dbjzeros, 1)
     end
- 
+
     testonemore(x::Float64) = dbesseljm(x)*dbesseljm(nextfloat(x)) > 0 &&
                                 dbesseljm(x)*dbesseljm(prevfloat(x)) > 0
 
