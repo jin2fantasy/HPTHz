@@ -18,9 +18,10 @@ immutable ModeCondition
 end
 
 function BesselJPrimeRoots(m::Int, n::Int)
+    limit = 50
     besseljm(x) = besselj(m, x)
     dbesseljm = derivative(besseljm)
-    dbjzeros = fzeros(dbesseljm, 0.0, 50) # limits can be changed
+    dbjzeros = fzeros(dbesseljm, 0.0, limit) # limit can be changed
                                        # if n is high
     if dbjzeros[1] == 0.0
         deleteat!(dbjzeros, 1)
@@ -32,7 +33,7 @@ function BesselJPrimeRoots(m::Int, n::Int)
     while testonemore(dbjzeros[1])
         deleteat!(dbjzeros, 1)
     end
-
+    n > length(dbjzeros) && (error("n is too high; increase limit"))
     dbjzeros[n]
 end
 
@@ -96,17 +97,32 @@ function calTE(cond::ModeCondition)
     end
 
     Ex1 = Ex.*complex(cos(phi3)) - complex(sin(phi3)).*Ey # rotation of field w.r.t.
-                                        # observation plane
+                                        				  # observation plane
     Ey1 = complex(sin(phi3)).*Ex + Ey.*complex(cos(phi3))
     Ex = Ex1
     Ey = Ey1
 
+    open("Ex.txt", "w") do f
+        for i = 1:N
+            for j = 1:N
+                @printf f "%0.5e " abs(Ex[i,j])
+            end
+            println(f)
+        end
+    end
+    open("Ey.txt", "w") do f
+        for i = 1:N
+            for j = 1:N
+                @printf f "%0.5e " abs(Ey[i,j])
+            end
+            println(f)
+        end
+    end
     # Efield = Ex + exp(im*phi3)*Ey
     Exdb = 20 .* log(float64(abs(Ex)./maximum(abs(Ex))))
     Eydb = 20 .* log(float64(abs(Ey)./maximum(abs(Ey))))
 
-    Emag = sqrt(float64(((real(Ex)).^2 + (imag(Ex)).^2)
-        + ((real(Ey).^2 + imag(Ey).^2))))
+    Emag = sqrt(float64((abs2(Ex)) + (abs2(Ey))))
     Edb = 20 .* log(Emag./maximum(Emag))
 
     Exphase = angle(Ex)
@@ -114,23 +130,31 @@ function calTE(cond::ModeCondition)
 
     figure(1)
     subplot(221)
-    img1 = imshow(abs(Ex)); grid("on"); colorbar(img1); axis("on")
+    img1 = imshow(abs(Ex), extent=[x[1],x[end],y[1],y[end]]);
+    grid("on"); colorbar(img1); axis("on")
     subplot(222)
-    img2 = imshow(abs(Ey)); grid("on"); colorbar(img2); axis("on")
+    img2 = imshow(abs(Ey), extent=[x[1],x[end],y[1],y[end]]);
+    grid("on"); colorbar(img2); axis("on")
     subplot(223)
-    img3 = imshow(Exphase); grid("on"); colorbar(img3); axis("on")
+    img3 = imshow(Exphase, extent=[x[1],x[end],y[1],y[end]]);
+    grid("on"); colorbar(img3); axis("on")
     subplot(224)
-    img4 = imshow(Eyphase); grid("on"); colorbar(img4); axis("on")
+    img4 = imshow(Eyphase, extent=[x[1],x[end],y[1],y[end]]);
+    grid("on"); colorbar(img4); axis("on")
 
     figure(2)
     subplot(221)
     clims = [-40 0];
-    img5 = imshow(Exdb,vmin=-40,vmax=0); grid("on"); colorbar(img5); axis("on")
+    img5 = imshow(Exdb,vmin=-40,vmax=0, extent=[x[1],x[end],y[1],y[end]]);
+    grid("on"); colorbar(img5); axis("on")
     subplot(222)
-    img6 = imshow(Eydb,vmin=-40,vmax=0); grid("on"); colorbar(img6); axis("on")
+    img6 = imshow(Eydb,vmin=-40,vmax=0, extent=[x[1],x[end],y[1],y[end]]);
+    grid("on"); colorbar(img6); axis("on")
     subplot(223)
-    img7 = imshow(Edb,vmin=-40,vmax=0); grid("on"); colorbar(img7); axis("on")
+    img7 = imshow(Edb,vmin=-40,vmax=0, extent=[x[1],x[end],y[1],y[end]]);
+    grid("on"); colorbar(img7); axis("on")
     subplot(224)
-    img8 = imshow(Emag); grid("on"); colorbar(img8); axis("on")
+    img8 = imshow(Emag, extent=[x[1],x[end],y[1],y[end]]);
+    grid("on"); colorbar(img8); axis("on")
 
 end
