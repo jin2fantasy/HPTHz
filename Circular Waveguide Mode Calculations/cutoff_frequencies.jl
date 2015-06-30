@@ -28,14 +28,18 @@ function BesselJPrimeRoots(m::Int, n::Int)
     dbjzeros[n]
 end
 
-Radius = 5.5e-3:-0.1e-3:5.2e-3
+Radius = 5.5e-3:-0.1e-3:5.1e-3
 open("cutoff_results.txt", "w") do f
     for r in Radius
         println(f, "radius is $(r*1e3) mm")
             for m = 0:10, n = 1:4
-                println(f, "    cutoff for TE$(m),$(n) mode is ",
-                        c*BesselJPrimeRoots(m, n)/(2pi*r)/1e9, " GHz")
+                if (m == 0 && n == 3) || (m == 8 && n == 1)
+                    println(f, "        cutoff for TE$(m),$(n) mode is ",
+                            c*BesselJPrimeRoots(m, n)/(2pi*r)/1e9, " GHz")
+                else
+                    println(f, "    cutoff for TE$(m),$(n) mode is ",
+                            c*BesselJPrimeRoots(m, n)/(2pi*r)/1e9, " GHz")
+                end
             end
     end
 end
-
