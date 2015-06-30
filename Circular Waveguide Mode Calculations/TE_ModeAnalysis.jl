@@ -68,10 +68,10 @@ function calTE(cond::ModeCondition)
 
 	for kk = 1:N
         for qq = 1:N
-    		r = sqrt(x[kk].^2 + y[qq].^2)
+    		r = sqrt(x[kk]^2 + y[qq]^2)
     		phi = angle(complex(x[kk], y[qq]))
             temp1 = nump.*r./Rw
-    		Jmprime = (besselj(m-1, temp1) - besselj(m+1, temp1)) ./ 2
+    		Jmprime = (besselj(m-1, temp1) - besselj(m+1, temp1)) / 2
             Jm = besselj(m, temp1)
 
             if r <= Rw
@@ -102,22 +102,6 @@ function calTE(cond::ModeCondition)
     Ex = Ex1
     Ey = Ey1
 
-    open("Ex.txt", "w") do f
-        for i = 1:N
-            for j = 1:N
-                @printf f "%0.5e " abs(Ex[i,j])
-            end
-            println(f)
-        end
-    end
-    open("Ey.txt", "w") do f
-        for i = 1:N
-            for j = 1:N
-                @printf f "%0.5e " abs(Ey[i,j])
-            end
-            println(f)
-        end
-    end
     # Efield = Ex + exp(im*phi3)*Ey
     Exdb = 20 .* log(float64(abs(Ex)./maximum(abs(Ex))))
     Eydb = 20 .* log(float64(abs(Ey)./maximum(abs(Ey))))
