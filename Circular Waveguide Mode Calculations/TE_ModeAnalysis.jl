@@ -145,4 +145,5 @@ function calTE(cond::ModeCondition)
     img8 = imshow(Emag, extent=[x[1],x[end],y[1],y[end]]);
     grid("on"); colorbar(img8); axis("on")
 
+	return x, y, Emag
 end
