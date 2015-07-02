@@ -54,7 +54,7 @@ function calTE(cond::ModeCondition)
 	phi2 = 0 	# angle of phase diff (set it 0)
 	phi3 = 0 	# -10*pi/180 # angle of field rotation, for rotation matrix
 
-	nump = BesselJPrimeRoots(cond.m, cond.n)
+	nump = BesselJPrimeRoots(m, n)
 	kr = nump/Rw
 	k = omega/c
 	kz = sqrt(k^2 - kr^2)
@@ -62,32 +62,35 @@ function calTE(cond::ModeCondition)
 	x = linspace(-Rlim,Rlim,N)
 	y = linspace(-Rlim,Rlim,N)
 
-    Ex = Ey = zeros(Complex, N, N)
+    Ex = zeros(Complex, N, N)
+	Ey = zeros(Complex, N, N)
 	Exold = Eyold = 0im
-    Exx = Eyy = zeros(Complex, N)
+    Exx = zeros(Complex, N)
+	Eyy = zeros(Complex, N)
 
 	for kk = 1:N
         for qq = 1:N
     		r = sqrt(x[kk]^2 + y[qq]^2)
     		phi = angle(complex(x[kk], y[qq]))
-            temp1 = nump.*r./Rw
+            temp1 = nump*r/Rw
     		Jmprime = (besselj(m-1, temp1) - besselj(m+1, temp1)) / 2
             Jm = besselj(m, temp1)
 
             if r <= Rw
                 # from above equations, add arbitrary amplitude (A)
                 # & phase (phi1)
-                Exold = ((im*m/kr/r)*B*exp(im*phi2)*cos(m*phi)*cos(phi)
-                    * Jm + im*B*exp(im*phi2)*sin(m*phi)*sin(phi)*Jmprime
+                Exold = ((im*m/kr/r)*B*exp(im*phi2)*cos(m*phi)*cos(phi)*Jm
+				 	+ im*B*exp(im*phi2)*sin(m*phi)*sin(phi)*Jmprime
                     - A*exp(im*phi1)*(im*m/kr/r)*sin(m*phi)*cos(phi)*Jm
                     + im*A*exp(im*phi1)*cos(m*phi)*sin(phi)*Jmprime)
-                Eyold = ((im*m/kr/r)*B*exp(im*phi2)*cos(m*phi)*sin(phi)
-                    * Jm - im*B*exp(im*phi2)*sin(m*phi)*cos(phi)*Jmprime
+
+                Eyold = ((im*m/kr/r)*B*exp(im*phi2)*cos(m*phi)*sin(phi)*Jm
+				 	- im*B*exp(im*phi2)*sin(m*phi)*cos(phi)*Jmprime
                     - A*exp(im*phi1)*(im*m/kr/r)*sin(m*phi)*sin(phi)*Jm
                     - im*A*exp(im*phi1)*cos(m*phi)*cos(phi)*Jmprime)
             else
-                Exold = complex(10^(-2.0))
-                Eyold = complex(10^(-2.0))
+                Exold = complex(0.01)
+                Eyold = complex(0.01)
             end
             Exx[qq] = Exold
             Eyy[qq] = Eyold
@@ -96,7 +99,8 @@ function calTE(cond::ModeCondition)
         Ey[:, kk] = Eyy[:]
     end
 
-    Ex1 = Ex.*complex(cos(phi3)) - complex(sin(phi3)).*Ey # rotation of field w.r.t.
+    Ex1 = Ex.*complex(cos(phi3)) - complex(sin(phi3)).*Ey # rotation of field
+														  # w.r.t.
                                         				  # observation plane
     Ey1 = complex(sin(phi3)).*Ex + Ey.*complex(cos(phi3))
     Ex = Ex1
