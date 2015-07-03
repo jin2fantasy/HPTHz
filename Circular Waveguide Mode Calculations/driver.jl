@@ -10,3 +10,9 @@ Emag0 = vec(Emag[(1+end)/2, :])
 include("find_localextrema.jl")
 maxima, minima = find_localextrema(Emag0)
 xmax = [x[i] for i in maxima]
+Emax = [Emag0[i] for i in maxima]
+
+println("maxima locations and their field values are")
+for i = 1:length(xmax)
+    @printf("% 0.5f   % 0.5f\n", xmax[i], Emax[i])
+end
