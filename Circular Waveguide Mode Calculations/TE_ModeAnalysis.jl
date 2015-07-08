@@ -13,8 +13,8 @@ using PyPlot
 immutable ModeCondition
 	m::Int # azimuthal number
 	n::Int # radial number
-	Rw # [cm] radius of the cavity
-	f # [Hz] frequency
+	Rw::Float64 # [cm] radius of the cavity
+	f::Float64 # [Hz] frequency
 end
 
 function BesselJPrimeRoots(m::Int, n::Int)

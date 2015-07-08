@@ -1,3 +1,48 @@
+radius is 2.2 mm
+    cutoff for TE0,1 mode is 83.10178060302732 GHz
+    cutoff for TE0,2 mode is 152.15357043839816 GHz
+        cutoff for TE0,3 mode is 220.6414906326321 GHz
+    cutoff for TE0,4 mode is 288.96333192675814 GHz
+    cutoff for TE1,1 mode is 39.931469647115634 GHz
+    cutoff for TE1,2 mode is 115.62797122431815 GHz
+    cutoff for TE1,3 mode is 185.13505351141725 GHz
+    cutoff for TE1,4 mode is 253.87904466512114 GHz
+    cutoff for TE2,1 mode is 66.24008446621583 GHz
+    cutoff for TE2,2 mode is 145.44216433323624 GHz
+    cutoff for TE2,3 mode is 216.2171456278188 GHz
+    cutoff for TE2,4 mode is 285.6381146798834 GHz
+    cutoff for TE3,1 mode is 91.11510235245802 GHz
+    cutoff for TE3,2 mode is 173.83391065427742 GHz
+    cutoff for TE3,3 mode is 246.0696410791929 GHz
+    cutoff for TE3,4 mode is 316.33689369978975 GHz
+    cutoff for TE4,1 mode is 115.32673348585215 GHz
+    cutoff for TE4,2 mode is 201.3159844630015 GHz
+    cutoff for TE4,3 mode is 275.04437480888447 GHz
+    cutoff for TE4,4 mode is 346.22847652920086 GHz
+    cutoff for TE5,1 mode is 139.14145516973505 GHz
+    cutoff for TE5,2 mode is 228.15403298207426 GHz
+    cutoff for TE5,3 mode is 303.3532034638176 GHz
+    cutoff for TE5,4 mode is 375.47975998912835 GHz
+    cutoff for TE6,1 mode is 162.68695412296296 GHz
+    cutoff for TE6,2 mode is 254.50649933454238 GHz
+    cutoff for TE6,3 mode is 331.13528956843015 GHz
+    cutoff for TE6,4 mode is 404.207606750646 GHz
+    cutoff for TE7,1 mode is 186.03553914199088 GHz
+    cutoff for TE7,2 mode is 280.4767203171932 GHz
+    cutoff for TE7,3 mode is 358.487772263195 GHz
+    cutoff for TE7,4 mode is 432.4975705772995 GHz
+        cutoff for TE8,1 mode is 209.232629988207 GHz
+    cutoff for TE8,2 mode is 306.13642186965177 GHz
+    cutoff for TE8,3 mode is 385.4815812152282 GHz
+    cutoff for TE8,4 mode is 460.41447809591006 GHz
+    cutoff for TE9,1 mode is 232.30885737915554 GHz
+    cutoff for TE9,2 mode is 331.5377353160163 GHz
+    cutoff for TE9,3 mode is 412.1703426398894 GHz
+    cutoff for TE9,4 mode is 488.0088176885369 GHz
+    cutoff for TE10,1 mode is 255.28597927994474 GHz
+    cutoff for TE10,2 mode is 356.7199208693374 GHz
+    cutoff for TE10,3 mode is 438.59574107364676 GHz
+    cutoff for TE10,4 mode is 515.3208027298894 GHz
 radius is 5.5 mm
     cutoff for TE0,1 mode is 33.240712241210936 GHz
     cutoff for TE0,2 mode is 60.86142817535928 GHz
