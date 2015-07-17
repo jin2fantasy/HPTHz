@@ -28,7 +28,7 @@ function BesselJPrimeRoots(m::Int, n::Int)
     dbjzeros[n]
 end
 
-Radius = [2.2e-3, 5.5e-3:-0.1e-3:5.1e-3]
+Radius = [6.55e-3, 5.5e-3:-0.1e-3:5.1e-3]
 open("cutoff_results.txt", "w") do f
     for r in Radius
         println(f, "radius is $(r*1e3) mm")

@@ -24,7 +24,7 @@ end
 const c = 299792458
 const f = 95e9
 const lambda0 = c/f
-const a = 6.55e-3
+const a = 5.15e-3
 const d = 4*lambda0
 function resonant_frequency(m::Int, n::Int, l::Int)
     μᵣ = 1
