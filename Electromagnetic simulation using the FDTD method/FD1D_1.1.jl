@@ -16,7 +16,7 @@ spread = 12    # Width of the incident pulse
 T = 0
 NSTEPS = 1
 
-while NSTEPS > 0
+while NSTEPS >= 1
     @printf("NSTEPS --> ")      # NSTEPS is the number of times the
     NSTEPS = int(readline())    # main loop has excuted
     @printf("%d \n", NSTEPS)
@@ -28,17 +28,17 @@ while NSTEPS > 0
         
         # Calculate the Ex field
         for k = 2:KE
-            ex[k] += 0.5 * (hy[k-1] - hy[k])
+            ex[k] += 0.5(hy[k-1] - hy[k])
         end
         
         # Put a Gaussia pulse in the middle
-        pulse = exp(-0.5 * ((t0-T)/spread)^2.0)
+        pulse = exp(-0.5((t0-T)/spread)^2.0)
         ex[kc] = pulse
         @printf("%5.1f  %6.2f\n", t0-T, ex[kc])
         
-        #Calculate the Hy field
+        # Calculate the Hy field
         for k = 1:KE-1
-            hy[k] = hy[k] + 0.5 * (ex[k] - ex[k+1])
+            hy[k] += 0.5(ex[k] - ex[k+1])
         end
         
     end  ### End of Main FDTD loop
